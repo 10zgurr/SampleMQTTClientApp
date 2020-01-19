@@ -54,7 +54,6 @@ class MainActivity : AppCompatActivity(), MqttCallbackExtended, View.OnClickList
     }
 
     override fun onDestroy() {
-        // didn't get callbacks logs from these 2 methods at all
         MqttHelper.unSubscribeMqttChannel(client)
         MqttHelper.disconnectMqtt(client)
         super.onDestroy()
@@ -66,7 +65,6 @@ class MainActivity : AppCompatActivity(), MqttCallbackExtended, View.OnClickList
 
     override fun messageArrived(topic: String?, message: MqttMessage?) {
         runOnUiThread {
-            Log.i(TAG, "messageArrived")
             Log.d(TAG, "topic -> $topic")
             Log.d(TAG, "Message received -> $message")
             edit_text_message.text.clear()
